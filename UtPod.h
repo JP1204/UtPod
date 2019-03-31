@@ -24,8 +24,8 @@ class UtPod
       
       SongNode *songs;  //the head pointer
       
-      int podMemSize;  //the total amount of memory available on the UtPod
-   
+      int podMemSize;  // the total amount of memory available on the UtPod
+      int remainingMem; // the amount of memory remaining   
    public:
       //Default constructor
       //set the memory size to MAX_MEMORY

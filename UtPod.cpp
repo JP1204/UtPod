@@ -8,26 +8,27 @@ using namespace std;
 
 // Default Constructor
 // sets memory size to MAX
-UtPod(){
-   popMemSize = MAX_MEMORY;
+UtPod::UtPod(){
+   podMemSize = MAX_MEMORY;
+   remainingMem = MAX_MEMORY;
    songs = NULL;
 }
 
 
 // Constructor with size parameter
-UtPod(int size){
+UtPod::UtPod(int size){
    if(size > 512 || size < 0){
-      popMemSize = MAX_MEMORY;
+      podMemSize = MAX_MEMORY;
    }
    else{
-      popMemSize = size;
+      podMemSize = size;
    }
 }
 
 
-int addSong(Song const &s){
+int UtPod::addSong(Song const &s){
    // check if there is enough memory
-   if(s.getSize() > popMemSize){
+   if(s.getSize() > podMemSize){
       cout << "Not enough space for song\n";
       return -1;
    }
@@ -43,33 +44,22 @@ int addSong(Song const &s){
 }
 
 
-int removeSong(Song const &s){
+int UtPod::removeSong(Song const &s){
    return 1;
 }
 
 
-void shuffle(){
+void UtPod::shuffle(){
    return;
 }
 
 
-void sortSongList(){
+void UtPod::sortSongList(){
    return;
 }
 
 
-void clearMemory(){
+void UtPod::clearMemory(){
    return;
 }
-
-
-int getTotalMemory{
-   return 1;
-}
-
-
-int getRemainingMemory(){
-   return 1;
-}
-
 
