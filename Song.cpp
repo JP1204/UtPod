@@ -2,16 +2,17 @@
 //
 
 #include "Song.h"
-#include <string.h>
+#include <string>
 #include <iostream>
 using namespace std;
+
 
 // Default Constructor for Song Class
 
 Song::Song(){
    // creates empty strings by default
-   title = new string();
-   artist = new string();
+   title = "";
+   artist = "";
    size = 0;
 }
 
@@ -19,10 +20,9 @@ Song::Song(){
 /* Constructor for Song Class
  * Input: title(string), artist(string), and size(int) in MB
 */
-
-Song::Song(char const *titl, char const *art, int siz){
-   strcpy(title, titl);
-   strcpy(artist, art);
+Song::Song(string titl, string art, int siz){
+   title = titl;
+   artist = art;
    size = siz;
 }
 

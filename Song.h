@@ -20,17 +20,15 @@ class Song{
          { title = titl; }
       void setArtist(string artis)
          { artist = artis; }
-      void setSize(int siz)
-	 { size = siz; }
+      void setSize(int siz);
 
       // getters
-      char const *getTitle() const
+      string getTitle() const
          { return title; }
-      char const *getArtist() const
+      string getArtist() const
          { return artist; }
       int getSize() const
          { return size; }
-      void setSize(int);
 };
 
 #endif	   
