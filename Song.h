@@ -15,6 +15,7 @@ class Song{
    public:
       Song();   // Default Constructor 
       Song(string titl, string art, int siz);
+      Song(const Song &s);	// copy constructor
 
       // setters
       void setTitle(string titl)
@@ -32,6 +33,11 @@ class Song{
          { return size; }
       
       ~Song();	// Default destructor
+
+      void operator = (Song const &rhs);
+      bool operator > (Song const &rhs);
+      bool operator < (Song const &rhs);
+	      
 };
 
 #endif	   

@@ -19,9 +19,20 @@ Song::Song(){
  * Input: title(string), artist(string), and size(int) in MB
 */
 Song::Song(string titl, string art, int siz){
+   cout << "in Song Constructor\n";
    title = titl;
    artist = art;
    size = siz;
+   cout << "finished Song Constructor\n";
+}
+
+
+// Copy Constructor
+
+Song::Song(const Song &s){
+   title = s.title;
+   artist = s.artist;
+   size = s.size;
 }
 
 
@@ -34,6 +45,45 @@ void Song::setSize(int siz){
       exit(EXIT_FAILURE);
    }
 }
+
+
+// Overloaded operators
+void Song::operator = (Song const &rhs){
+   title = rhs.title;
+   artist = rhs.artist;
+   size = rhs.size;
+}
+
+
+bool Song::operator > (Song const &rhs){
+   if(title > rhs.title){
+      return true;
+   }
+   else if(artist > rhs.artist){
+      return true;
+   }
+   else if(size > rhs.size){
+      return true;
+   }
+   return false;
+}
+
+
+bool Song::operator < (Song const &rhs){
+   if(title < rhs.title){
+      return true;
+   }
+   else if(artist < rhs.artist){
+      return true;
+   }
+   else if(size < rhs.size){
+      return true;
+   }
+   return false;
+}
+
+
+
 
 
 // Default destructor

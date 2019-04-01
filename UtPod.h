@@ -18,7 +18,7 @@ class UtPod
       
       struct SongNode
       {
-         Song sg;
+         Song song;
          SongNode *next;
       };
       
