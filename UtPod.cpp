@@ -36,20 +36,50 @@ int UtPod::addSong(Song const &s){
    // adds the song otherwise
    else{
       SongNode *temp = new SongNode;	// allocates SongNode
-      cout << "allocation successful" << endl;
 
       temp->song = s;
       temp->next = songs;   // songs is the head pointer
       songs = temp;
 
-      cout << "song successfully added\n";
       return 0;
    }
 }
 
 
 int UtPod::removeSong(Song const &s){
-   return 1;
+   SongNode *temp = songs;
+   SongNode *prev = NULL;
+   int removeSuccess = -1;
+
+   while(temp){
+      if(temp->song == s){
+         // remove song if there is a match
+         if(prev == NULL){
+            // remove the first song in the list
+            SongNode *delSong = temp;
+	    delete delSong;	// frees up SongNode
+	   
+	    removeSuccess = 0;
+	    songs = temp->next;	// updates head pointer
+	    temp = NULL; // breaks out of loop once song is found  
+	 }
+	 else{
+            prev->next = temp->next;
+	    SongNode *delSong = temp;
+	    delete delSong;
+
+	    removeSuccess = 0;
+	    temp = NULL; 
+	 }
+      }
+      else{
+	 // increment pointers
+         prev = temp;
+	 temp = temp->next;
+      }
+   }
+
+   return removeSuccess;
 }
 
 

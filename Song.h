@@ -37,7 +37,7 @@ class Song{
       void operator = (Song const &rhs);
       bool operator > (Song const &rhs);
       bool operator < (Song const &rhs);
-	      
+      bool operator == (Song const &rhs);	      
 };
 
 #endif	   

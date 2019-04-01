@@ -24,7 +24,16 @@ int main(int argc, char *argv[])
     cout << "result = " << result << endl;
     
     t.showSongList();
-          
+    // testing copy constructor
+    Song copySong = s1;
+    result = t.addSong(copySong);
+    cout << "result = " << result << endl;
+
+    if(copySong == s1){
+	cout << "the copy constructor worked\n";
+    }
+
+
     Song s2("Beatles", "Hey Jude2", 5);
     result = t.addSong(s2);
     cout << "result = " << result << endl;

@@ -19,11 +19,9 @@ Song::Song(){
  * Input: title(string), artist(string), and size(int) in MB
 */
 Song::Song(string titl, string art, int siz){
-   cout << "in Song Constructor\n";
    title = titl;
    artist = art;
    size = siz;
-   cout << "finished Song Constructor\n";
 }
 
 
@@ -82,8 +80,13 @@ bool Song::operator < (Song const &rhs){
    return false;
 }
 
-
-
+bool Song::operator == (Song const &rhs){
+   return(
+      (title == rhs.title) &&
+      (artist == rhs.artist) &&
+      (size == rhs.size)
+   );
+}
 
 
 // Default destructor
