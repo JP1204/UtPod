@@ -3,6 +3,7 @@
 #ifndef SONG_H
 #define SONG_H
 #include <string>
+#include <iostream>
 using namespace std;
 
 
@@ -10,10 +11,10 @@ class Song{
    private:
       string title;
       string artist;
-      unsigned int size;   // can only have positive size
+      int size;   // can only have positive size
    public:
       Song();   // Default Constructor 
-      Song(string &titl, string &art, int siz);
+      Song(string titl, string art, int siz);
 
       // setters
       void setTitle(string titl)
@@ -29,6 +30,8 @@ class Song{
          { return artist; }
       int getSize() const
          { return size; }
+      
+      ~Song();	// Default destructor
 };
 
 #endif	   

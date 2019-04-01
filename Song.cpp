@@ -2,8 +2,6 @@
 //
 
 #include "Song.h"
-#include <string>
-#include <iostream>
 using namespace std;
 
 
@@ -27,7 +25,7 @@ Song::Song(string titl, string art, int siz){
 }
 
 
-Song::setSize(int siz){
+void Song::setSize(int siz){
    if(siz >= 0){
       size = siz;
    }
@@ -37,3 +35,6 @@ Song::setSize(int siz){
    }
 }
 
+
+// Default destructor
+Song::~Song() = default;
