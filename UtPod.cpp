@@ -53,12 +53,13 @@ int UtPod::removeSong(Song const &s){
       if(temp->song == s){
          // remove song if there is a match
          if(prev == NULL){
+            songs = temp->next;	// updates head pointer
+
             // remove the first song in the list
             SongNode *delSong = temp;
 	    delete delSong;	// frees up SongNode
 	   
 	    removeSuccess = 0;
-	    songs = temp->next;	// updates head pointer
 	    temp = NULL; // breaks out of loop once song is found  
 	 }
 	 else{
@@ -141,8 +142,12 @@ void UtPod::sortSongList(){
 
 void UtPod::clearMemory(){
    // free up all the SongNodes
-   for(SongNode *temp = songs; temp != NULL; temp = temp->next){
+   SongNode *temp = songs;
+
+   while(temp){
       SongNode *delSong = temp;
+      temp = temp->next;
+
       delete delSong;
    }
 
@@ -184,4 +189,7 @@ int UtPod::numSongs(){
 }
 
 
-UtPod::~UtPod() = default;
+UtPod::~UtPod(){
+   clearMemory();
+}
+
