@@ -1,6 +1,7 @@
 // Jimmy Phan
 //
 #include "UtPod.h"
+#include <stdlib.h>
 #include <iostream>
 using namespace std;
 
@@ -8,11 +9,8 @@ using namespace std;
 // Default Constructor
 // sets memory size to MAX
 UtPod::UtPod(){
-   cout << "in constructor" << endl;
    podMemSize = MAX_MEMORY;
-   remainingMem = MAX_MEMORY;
    songs = NULL;
-   cout << "finished the constructor\n";
 }
 
 
@@ -29,7 +27,7 @@ UtPod::UtPod(int size){
 
 int UtPod::addSong(Song const &s){
    // check if there is enough memory
-   if(s.getSize() > remainingMem){
+   if(s.getSize() > getRemainingMemory()){
       cout << "Not enough space for song\n";
       return -1;
    }
@@ -41,7 +39,7 @@ int UtPod::addSong(Song const &s){
       temp->next = songs;   // songs is the head pointer
       songs = temp;
 
-      return 0;
+      return 0;		// successful add
    }
 }
 
@@ -84,8 +82,29 @@ int UtPod::removeSong(Song const &s){
 
 
 void UtPod::shuffle(){
-   return;
+   srand(time(NULL));	// seeds the random number generator
+
+   // perform numSongs amount of swaps to shuffle
+   for(int i = 0; i < numSongs(); i++){
+      int n = rand() % numSongs();
+      int k = rand() % numSongs();
+
+      SongNode *p1 = songs;
+      SongNode *p2 = songs;
+     
+      for(int j = 0; j < n; j++){
+         // traverse to the nth song
+	 p1 = p1->next;
+      }
+      for(int j = 0; j < k; j++){
+	 // traverse to the kth song
+	 p2 = p2->next;
+      }
+ 
+      swapSongs(p1, p2); 
+   }
 }
+
 
 void UtPod::showSongList(){
    if(songs == NULL){
@@ -103,16 +122,66 @@ void UtPod::showSongList(){
    }
 }
 
+
 void UtPod::sortSongList(){
-   return;
+   for(SongNode *p = songs; p != NULL; p = p->next){
+      // insertion sort
+      SongNode *smallestSong = p;
+
+      for(SongNode *p2 = p->next; p2 != NULL; p2 = p2->next){
+         if(p2->song < smallestSong->song){
+            smallestSong = p2;	// iterates through and finds the smallest song
+	 }
+      }
+      
+      swapSongs(p, smallestSong); 
+   }         
 }
+
 
 void UtPod::clearMemory(){
-   return;
+   // free up all the SongNodes
+   for(SongNode *temp = songs; temp != NULL; temp = temp->next){
+      SongNode *delSong = temp;
+      delete delSong;
+   }
+
+   songs = NULL;
 }
 
+
 int UtPod::getRemainingMemory(){
-   return 1;
+   int memoryUsed = 0;
+   int memoryRemaining;
+
+   // traverse the nodes and add the sizes of all the songs
+   for(SongNode *temp = songs; temp != NULL; temp = temp->next){
+      memoryUsed += temp->song.getSize();
+   }
+
+   memoryRemaining = podMemSize - memoryUsed; 
 }
+
+
+void UtPod::swapSongs(SongNode *p1, SongNode *p2){
+   Song tempSong = p1->song;
+
+   p1->song = p2->song;
+   p2->song = tempSong;
+}
+
+
+int UtPod::numSongs(){
+   int num = 0;
+   SongNode *temp = songs;
+
+   while(temp){
+      num++;
+      temp = temp->next;
+   }
+
+   return num;
+}
+
 
 UtPod::~UtPod() = default;

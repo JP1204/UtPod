@@ -25,7 +25,7 @@ class UtPod
       SongNode *songs;  //the head pointer
       
       int podMemSize;  // the total amount of memory available on the UtPod
-      int remainingMem; // the amount of memory remaining   
+  
    public:
       //Default constructor
       //set the memory size to MAX_MEMORY
@@ -118,12 +118,8 @@ class UtPod
          output parms -
       */
 
-      int getTotalMemory() {
-         return 0;
-	      //   return memSize;
-      }
-
-
+      int getTotalMemory()
+         { return podMemSize; }
 
       /* FUNCTION - int getRemainingMemory
        *  returns the amount of memory available for adding new songs
@@ -134,6 +130,18 @@ class UtPod
       */
 
       int getRemainingMemory();
+
+      
+      /* FUNCTION - void swapSongs
+       * switches the 2 song's position on the linked list
+       * Input - 2 SongNode pointers
+       * Output - None
+       */
+
+      void swapSongs(SongNode *p1, SongNode *p2); 
+
+
+      int numSongs();
 
 
       ~UtPod();

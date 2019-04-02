@@ -53,7 +53,17 @@ int main(int argc, char *argv[])
     cout << "add result = " << result << endl;
     
     t.showSongList();
-    
+    cout << "After the sort: " << endl;
+    t.sortSongList();
+    t.showSongList();
+// shuffling
+cout << "after shuffling " << endl;
+    t.shuffle();
+    t.showSongList();
+    t.shuffle();
+    t.showSongList();
+
+
     result = t.removeSong(s2);
     cout << "delete result = " << result << endl;
   
@@ -79,6 +89,13 @@ int main(int argc, char *argv[])
     
     t.showSongList();
     cout << "memory = " << t.getRemainingMemory() << endl;
-    
+   
+    t.clearMemory();
+    t.showSongList();
+    cout << "memory = " << t.getRemainingMemory() << endl;
+
+    t.shuffle();
+    t.shuffle();
+
     return 1;
 }
