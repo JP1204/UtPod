@@ -57,13 +57,19 @@ bool Song::operator > (Song const &rhs){
    if(title > rhs.title){
       return true;
    }
-   else if(artist > rhs.artist){
-      return true;
+   else if(title == rhs.title){
+      if(artist > rhs.artist){
+         return true;
+      }
+      else if(artist == rhs.artist){
+         if(size > rhs.size){
+            return true;
+	 }
+      }
    }
-   else if(size > rhs.size){
-      return true;
-   }
+
    return false;
+
 }
 
 
@@ -71,12 +77,17 @@ bool Song::operator < (Song const &rhs){
    if(title < rhs.title){
       return true;
    }
-   else if(artist < rhs.artist){
-      return true;
+   else if(title == rhs.title){
+      if(artist < rhs.artist){
+         return true;
+      }
+      else if(artist == rhs.artist){
+         if(size < rhs.size){
+            return true;
+	 }
+      }
    }
-   else if(size < rhs.size){
-      return true;
-   }
+
    return false;
 }
 

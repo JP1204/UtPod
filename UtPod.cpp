@@ -22,6 +22,7 @@ UtPod::UtPod(int size){
    else{
       podMemSize = size;
    }
+   songs = NULL;
 }
 
 
@@ -152,6 +153,11 @@ void UtPod::clearMemory(){
    }
 
    songs = NULL;
+}
+
+
+int UtPod::getTotalMemory(){
+   return podMemSize;
 }
 
 

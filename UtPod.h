@@ -118,8 +118,7 @@ class UtPod
          output parms -
       */
 
-      int getTotalMemory()
-         { return podMemSize; }
+      int getTotalMemory();
 
       /* FUNCTION - int getRemainingMemory
        *  returns the amount of memory available for adding new songs
